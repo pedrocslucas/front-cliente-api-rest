@@ -79,7 +79,7 @@
     import Message from './Mensagem.vue';
 
     export default {
-        name: 'ClienteForm',
+        name: "ClienteForm",
         data() {
             return {
                 nascimento: null,
@@ -96,6 +96,13 @@
         methods: {
             async createCliente(e) {
                 e.preventDefault()
+
+                if (!this.nascimento || !this.cpf || !this.nome || !this.endereco || !this.telefone || !this.email || !this.datacadastro) {
+                    this.msg = "Por favor, preencha todos os campos.";
+                    setTimeout(() => (this.msg = ""), 3000);
+                    return;
+                }
+
                 const data = {
                     nascimento: this.nascimento,
                     cpf: this.cpf,
