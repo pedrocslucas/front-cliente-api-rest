@@ -1,17 +1,29 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import Login from '../components/Login.vue'
+import EditarCliente from '../components/EditarCliente.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/home',
     name: 'Home',
     component: Home
   },
   {
     path: '/clientes',
-    name: 'clientes',
-
-    component: () => import(/* webpackChunkName: "about" */ '../views/Clientes.vue')
+    name: 'Clientes',
+    component: () => import('../views/Clientes.vue')
+  },
+  {
+    path: '/',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: '/clientes/edit/:id',
+    name: 'EditarCliente',
+    component: EditarCliente,
+    props: true // Permitir que os parâmetros sejam passados como props
   }
 ]
 
